@@ -1,5 +1,6 @@
 ﻿using PortaLinuxVM.Modules.HighTide;
 using PortaLinuxVM.Modules.System;
+using PortaLinuxVM.Software;
 using System.Reflection;
 using System.Text;
 
@@ -18,6 +19,9 @@ namespace PortaLinuxVM
             DateTime startTime = DateTime.Now;
 
             Console.WriteLine("PortaLinuxVM successfully loaded!");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Please don't resize the console window as it will break\nsome functions of the program I'm too lazy to fix.");
+            Console.ResetColor();
             Console.Write("Press any key to start...");
             Console.ReadKey();
             Console.Clear();
@@ -228,7 +232,17 @@ namespace PortaLinuxVM
                             Console.WriteLine(ConsoleFormatting.FormatString("{CYAN}        {RED}\\{MAGENTA}|{RED}/{CYAN}"));
                             Console.WriteLine(ConsoleFormatting.FormatString("{CYAN}         {RED}V{DEFAULT}"));
                         }
-                        
+                        break;
+
+                    case "vim":
+                        if (args.Length == 1)
+                        {
+                            Console.WriteLine("vim: No file specified");
+                        }
+                        else
+                        {
+                            Vim.StartVim(vfs, argument);
+                        }
                         break;
 
                     case "shutdown":

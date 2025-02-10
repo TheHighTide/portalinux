@@ -2,7 +2,7 @@
 
 namespace PortaLinuxVM.Modules.System
 {
-    internal class VFS
+    public class VFS
     {
         public class VFile
         {
